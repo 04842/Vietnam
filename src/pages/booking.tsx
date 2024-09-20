@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
-import SEO from '../components/seo'
+import Seo from '../components/Seo'
 import FlightSearch from '../components/booking/FlightSearch'
 import HotelSearch from '../components/booking/HotelSearch'
 import ActivitySearch from '../components/booking/ActivitySearch'
@@ -14,7 +14,7 @@ const BookingPage: React.FC = () => {
 
   return (
     <Layout>
-      <SEO title="預訂系統" description="預訂您的航班、酒店、活動和租車" />
+      <Seo title="預訂系統" description="預訂您的航班、酒店、活動和租車" />
       <h1>預訂系統</h1>
       <nav>
         <button onClick={() => setActiveTab('flights')}>航班</button>

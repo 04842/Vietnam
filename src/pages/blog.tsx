@@ -3,7 +3,7 @@
 import React from 'react'
 import { graphql, PageProps } from 'gatsby'
 import Layout from '../components/Layout'
-import SEO from '../components/seo'
+import Seo from '../components/Seo'
 import BlogPostCard from '../components/blog/BlogPostCard'
 
 interface BlogPost {
@@ -32,7 +32,7 @@ const BlogPage: React.FC<PageProps<BlogPageData>> = ({ data }) => {
 
   return (
     <Layout>
-      <SEO title="旅遊博客" description="探索我們的旅遊文章和專家攻略" />
+      <Seo title="旅遊博客" description="探索我們的旅遊文章和專家攻略" />
       <h1>旅遊博客</h1>
       <div>
         {posts.map(({ node }) => (

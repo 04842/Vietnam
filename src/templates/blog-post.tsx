@@ -3,7 +3,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
-import SEO from '../components/seo'
+import Seo from '../components/Seo'
 import SocialShare from '../components/blog/SocialShare'
 
 interface BlogPostProps {
@@ -26,7 +26,7 @@ const BlogPost: React.FC<BlogPostProps> = ({ data }) => {
 
   return (
     <Layout>
-      <SEO 
+      <Seo 
         title={post.frontmatter.title} 
         description={post.frontmatter.excerpt || ''}
       />

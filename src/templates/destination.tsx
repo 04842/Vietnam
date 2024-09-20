@@ -3,7 +3,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
-import SEO from '../components/seo'
+import Seo from '../components/Seo'
 import InteractiveMap from '../components/InteractiveMap'
 import TravelGuide from '../components/TravelGuide'
 import LocalActivities from '../components/LocalActivities'
@@ -31,7 +31,7 @@ const DestinationPage: React.FC<DestinationPageProps> = ({ data }) => {
 
   return (
     <Layout>
-      <SEO title={destination.name} description={destination.description} />
+      <Seo title={destination.name} description={destination.description} />
       <h1>{destination.name}</h1>
       <p>{destination.description}</p>
       <section>
@@ -54,7 +54,7 @@ const DestinationPage: React.FC<DestinationPageProps> = ({ data }) => {
 export default DestinationPage
 
 export const query = graphql`
-  query($id: String!) {
+  query($id: String!, $slug: String) {
     markdownRemark(id: { eq: $id }) {
       frontmatter {
         name
@@ -66,6 +66,13 @@ export const query = graphql`
           longitude
         }
       }
+    }
+    destination(slug: { eq: $slug }) {
+      name
+      description
+      history
+      culture
+      location
     }
   }
 `
