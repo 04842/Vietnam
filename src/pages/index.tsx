@@ -1,7 +1,7 @@
 // src/pages/index.tsx
 
 import React from 'react'
-import { graphql } from 'gatsby'
+import { graphql, HeadFC } from 'gatsby'
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
 import SearchBar from '../components/SearchBar'
@@ -20,11 +20,10 @@ interface HomePageProps {
 }
 
 const HomePage: React.FC<HomePageProps> = ({ data }) => {
-  const { title, description } = data.site.siteMetadata
+  const { title } = data.site.siteMetadata
 
   return (
     <Layout>
-      <SEO title={title} description={description} />
       <h1>Welcome to our travel website</h1>
       <h2>{title}</h2>
       <SearchBar />
@@ -35,6 +34,10 @@ const HomePage: React.FC<HomePageProps> = ({ data }) => {
 }
 
 export default HomePage
+
+export const Head: HeadFC<HomePageProps> = ({ data }) => (
+  <SEO title={data.site.siteMetadata.title} description={data.site.siteMetadata.description} />
+)
 
 export const query = graphql`
   query HomePageQuery {
