@@ -18,7 +18,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `markdown-pages`,
-        path: `${__dirname}/src/data/markdown-pages`,
+        path: `/opt/buildhome/repo/src/data/markdown-pages`,
       },
     },
     {
@@ -32,7 +32,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `markdown-pages`,
-        path: `${__dirname}/src/data/markdown-pages`,
+        path: `/opt/buildhome/repo/src/data/markdown-pages`,
         ignore: [`**/\.*`], // ignore files starting with a dot
       },
     },
