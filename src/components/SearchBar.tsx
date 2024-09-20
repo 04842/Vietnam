@@ -1,14 +1,16 @@
 // src/components/SearchBar.tsx
 
-import React, { useState } from 'react'
+import React, { useState, FormEvent } from 'react'
 import { navigate } from 'gatsby'
 
 const SearchBar: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('')
 
-  const handleSearch = (e: React.FormEvent) => {
+  const handleSearch = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    navigate(`/search?q=${encodeURIComponent(searchTerm)}`)
+    if (searchTerm.trim()) {
+      navigate(`/search?q=${encodeURIComponent(searchTerm.trim())}`)
+    }
   }
 
   return (

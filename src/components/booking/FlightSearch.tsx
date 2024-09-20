@@ -12,15 +12,21 @@ interface Flight {
   price: number
 }
 
+interface QueryData {
+  allFlight: {
+    nodes: Flight[]
+  }
+}
+
 const FlightSearch: React.FC = () => {
   const [origin, setOrigin] = useState('')
   const [destination, setDestination] = useState('')
   const [departureDate, setDepartureDate] = useState('')
   const [flights, setFlights] = useState<Flight[]>([])
 
-  const data = useStaticQuery(graphql`
+  const data = useStaticQuery<QueryData>(graphql`
     query {
-      allFlights {
+      allFlight {
         nodes {
           id
           airline
@@ -35,7 +41,7 @@ const FlightSearch: React.FC = () => {
   const handleSearch = () => {
     // 在實際應用中，這裡應該調用 API 進行搜索
     // 現在我們只是模擬搜索結果
-    setFlights(data.allFlights.nodes)
+    setFlights(data.allFlight.nodes)
   }
 
   return (
@@ -70,4 +76,5 @@ const FlightSearch: React.FC = () => {
   )
 }
 
+// 添加這行來導出組件
 export default FlightSearch

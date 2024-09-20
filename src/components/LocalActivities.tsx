@@ -7,10 +7,28 @@ interface LocalActivitiesProps {
   destinationName: string
 }
 
+interface Activity {
+  name: string
+  description: string
+  date: string
+}
+
+interface LocalActivity {
+  id: string
+  destinationName: string
+  activities: Activity[]
+}
+
+interface QueryData {
+  allLocalActivity: {
+    nodes: LocalActivity[]
+  }
+}
+
 const LocalActivities: React.FC<LocalActivitiesProps> = ({ destinationName }) => {
-  const data = useStaticQuery(graphql`
+  const data = useStaticQuery<QueryData>(graphql`
     query {
-      allLocalActivities {
+      allLocalActivity {
         nodes {
           id
           destinationName
@@ -24,8 +42,8 @@ const LocalActivities: React.FC<LocalActivitiesProps> = ({ destinationName }) =>
     }
   `)
 
-  const localActivities = data.allLocalActivities.nodes.find(
-    (activities: any) => activities.destinationName === destinationName
+  const localActivities = data.allLocalActivity.nodes.find(
+    (activities) => activities.destinationName === destinationName
   )
 
   if (!localActivities) return null
@@ -34,7 +52,7 @@ const LocalActivities: React.FC<LocalActivitiesProps> = ({ destinationName }) =>
     <section>
       <h2>當地活動</h2>
       <ul>
-        {localActivities.activities.map((activity: any) => (
+        {localActivities.activities.map((activity) => (
           <li key={activity.name}>
             <h3>{activity.name}</h3>
             <p>{activity.description}</p>

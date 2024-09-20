@@ -1,25 +1,25 @@
 // src/pages/destinations.tsx
 
 import React from 'react'
-import { graphql, Link } from 'gatsby'
+import { graphql, Link, PageProps } from 'gatsby'
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
 
-interface DestinationsPageProps {
-  data: {
-    allDestinations: {
-      nodes: Array<{
-        id: string
-        name: string
-        slug: string
-        description: string
-      }>
-    }
+interface Destination {
+  id: string
+  name: string
+  slug: string
+  description: string
+}
+
+interface DestinationsPageData {
+  allDestination: {
+    nodes: Destination[]
   }
 }
 
-const DestinationsPage: React.FC<DestinationsPageProps> = ({ data }) => {
-  const destinations = data.allDestinations.nodes
+const DestinationsPage: React.FC<PageProps<DestinationsPageData>> = ({ data }) => {
+  const destinations = data.allDestination.nodes
 
   return (
     <Layout>
@@ -43,7 +43,7 @@ export default DestinationsPage
 
 export const query = graphql`
   query {
-    allDestinations {
+    allDestination {
       nodes {
         id
         name

@@ -1,34 +1,44 @@
 // src/pages/trip-planner.tsx
 
 import React, { useState } from 'react'
-import { graphql } from 'gatsby'
+import { graphql, PageProps } from 'gatsby'
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
 import DestinationSelector from '../components/DestinationSelector'
 import DateRangePicker from '../components/DateRangePicker'
-import ItineraryGenerator from '../components/ItineraryGenerator'
 import ItineraryEditor from '../components/ItineraryEditor'
 import BudgetCalculator from '../components/BudgetCalculator'
-import { syncToGoogleCalendar, syncToAppleCalendar } from '../utils/calendarSync'
-import { graphql, useStaticQuery } from 'gatsby'
 
+interface Destination {
+  id: string
+  name: string
+  slug: string
+}
 
-interface TripPlannerPageProps {
-  data: {
-    allDestinations: {
-      nodes: Array<{
-        id: string
-        name: string
-        slug: string
-      }>
-    }
+interface DateRange {
+  startDate: Date | null
+  endDate: Date | null
+}
+
+interface ItineraryDay {
+  day: number
+  activities: string[]
+}
+
+interface Itinerary {
+  days: ItineraryDay[]
+}
+
+interface TripPlannerPageData {
+  allDestination: {
+    nodes: Destination[]
   }
 }
 
-const TripPlannerPage: React.FC<TripPlannerPageProps> = ({ data }) => {
-  const [selectedDestination, setSelectedDestination] = useState('')
-  const [dateRange, setDateRange] = useState({ startDate: null, endDate: null })
-  const [itinerary, setItinerary] = useState(null)
+const TripPlannerPage: React.FC<PageProps<TripPlannerPageData>> = ({ data }) => {
+  const [selectedDestination, setSelectedDestination] = useState<string>('')
+  const [dateRange, setDateRange] = useState<DateRange>({ startDate: null, endDate: null })
+  const [itinerary, setItinerary] = useState<Itinerary | null>(null)
 
   const handleGenerateItinerary = () => {
     // 這裡將來需要實現行程生成邏輯
@@ -47,7 +57,7 @@ const TripPlannerPage: React.FC<TripPlannerPageProps> = ({ data }) => {
       <SEO title="行程規劃器" description="規劃您的完美旅程" />
       <h1>行程規劃器</h1>
       <DestinationSelector
-        destinations={data.allDestinations.nodes}
+        destinations={data.allDestination.nodes}
         onSelect={setSelectedDestination}
       />
       <DateRangePicker onChange={setDateRange} />
@@ -66,7 +76,7 @@ export default TripPlannerPage
 
 export const query = graphql`
   query {
-    allDestinations {
+    allDestination {
       nodes {
         id
         name

@@ -1,7 +1,6 @@
 // src/components/SEO.tsx
 
 import React from 'react'
-import { Helmet } from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
 
 interface SEOProps {
@@ -9,9 +8,10 @@ interface SEOProps {
   description?: string
   lang?: string
   meta?: Array<{ name: string; content: string }>
+  children?: React.ReactNode
 }
 
-const SEO: React.FC<SEOProps> = ({ description, lang = 'zh-TW', meta = [], title }) => {
+const SEO: React.FC<SEOProps> = ({ description, lang = 'zh-TW', meta = [], title, children }) => {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -27,49 +27,25 @@ const SEO: React.FC<SEOProps> = ({ description, lang = 'zh-TW', meta = [], title
   )
 
   const metaDescription = description || site.siteMetadata.description
+  const defaultTitle = site.siteMetadata?.title
 
   return (
-    <Helmet
-      htmlAttributes={{
-        lang,
-      }}
-      title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
-      meta={[
-        {
-          name: `description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:title`,
-          content: title,
-        },
-        {
-          property: `og:description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:type`,
-          content: `website`,
-        },
-        {
-          name: `twitter:card`,
-          content: `summary`,
-        },
-        {
-          name: `twitter:creator`,
-          content: site.siteMetadata.author,
-        },
-        {
-          name: `twitter:title`,
-          content: title,
-        },
-        {
-          name: `twitter:description`,
-          content: metaDescription,
-        },
-      ].concat(meta)}
-    />
+    <>
+      <html lang={lang} />
+      <title>{defaultTitle ? `${title} | ${defaultTitle}` : title}</title>
+      <meta name="description" content={metaDescription} />
+      <meta property="og:title" content={title} />
+      <meta property="og:description" content={metaDescription} />
+      <meta property="og:type" content="website" />
+      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:creator" content={site.siteMetadata?.author || ''} />
+      <meta name="twitter:title" content={title} />
+      <meta name="twitter:description" content={metaDescription} />
+      {meta.map((item, index) => (
+        <meta key={index} name={item.name} content={item.content} />
+      ))}
+      {children}
+    </>
   )
 }
 

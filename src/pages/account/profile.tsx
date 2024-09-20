@@ -3,9 +3,9 @@
 import React from 'react'
 import Layout from '../../components/Layout'
 import SEO from '../../components/SEO'
-import ProfileForm from '../../components/account/ProfileForm'
-import OrderHistory from '../../components/account/OrderHistory'
-import PointsAndCoupons from '../../components/account/PointsAndCoupons'
+import ProfileForm from '../account/ProfileForm'
+import OrderHistory from '../account/OrderHistory'
+import PointsAndCoupons from '../account/PointsAndCoupons'
 
 const ProfilePage: React.FC = () => {
   return (

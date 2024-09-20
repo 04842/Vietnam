@@ -10,15 +10,21 @@ interface Hotel {
   price: number
 }
 
+interface QueryData {
+  allHotel: {
+    nodes: Hotel[]
+  }
+}
+
 const HotelSearch: React.FC = () => {
   const [location, setLocation] = useState('')
   const [checkIn, setCheckIn] = useState('')
   const [checkOut, setCheckOut] = useState('')
   const [hotels, setHotels] = useState<Hotel[]>([])
 
-  const data = useStaticQuery(graphql`
+  const data = useStaticQuery<QueryData>(graphql`
     query {
-      allHotels {
+      allHotel {
         nodes {
           id
           name
@@ -32,7 +38,7 @@ const HotelSearch: React.FC = () => {
   const handleSearch = () => {
     // 在實際應用中，這裡應該調用 API 進行搜索
     // 現在我們只是模擬搜索結果
-    setHotels(data.allHotels.nodes)
+    setHotels(data.allHotel.nodes)
   }
 
   return (

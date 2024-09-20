@@ -1,0 +1,14 @@
+[
+    {
+      "id": "hotel-1",
+      "name": "Ritz Paris",
+      "rating": 5,
+      "price": 1000.00
+    },
+    {
+      "id": "hotel-2",
+      "name": "Park Hyatt Tokyo",
+      "rating": 4.5,
+      "price": 800.00
+    }
+  ]

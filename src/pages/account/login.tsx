@@ -4,8 +4,8 @@ import React, { useState } from 'react'
 import { navigate } from 'gatsby'
 import Layout from '../../components/Layout'
 import SEO from '../../components/SEO'
-import LoginForm from '../../components/account/LoginForm'
-import RegisterForm from '../../components/account/RegisterForm'
+import LoginForm from '../account/LoginForm'
+import RegisterForm from '../account/RegisterForm'
 
 const LoginPage: React.FC = () => {
   const [isLogin, setIsLogin] = useState(true)

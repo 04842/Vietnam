@@ -4,12 +4,17 @@ import React, { useState } from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 import 'react-datepicker/dist/react-datepicker.css'
 
-
 interface Car {
   id: string
   make: string
   model: string
   price: number
+}
+
+interface QueryData {
+  allCar: {
+    nodes: Car[]
+  }
 }
 
 const CarRentalSearch: React.FC = () => {
@@ -18,9 +23,9 @@ const CarRentalSearch: React.FC = () => {
   const [returnDate, setReturnDate] = useState('')
   const [cars, setCars] = useState<Car[]>([])
 
-  const data = useStaticQuery(graphql`
+  const data = useStaticQuery<QueryData>(graphql`
     query {
-      allCars {
+      allCar {
         nodes {
           id
           make
@@ -34,7 +39,7 @@ const CarRentalSearch: React.FC = () => {
   const handleSearch = () => {
     // 在實際應用中，這裡應該調用 API 進行搜索
     // 現在我們只是模擬搜索結果
-    setCars(data.allCars.nodes)
+    setCars(data.allCar.nodes)
   }
 
   return (

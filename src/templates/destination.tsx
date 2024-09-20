@@ -11,21 +11,23 @@ import LanguageCurrencySelector from '../components/LanguageCurrencySelector'
 
 interface DestinationPageProps {
   data: {
-    destination: {
-      name: string
-      description: string
-      history: string
-      culture: string
-      location: {
-        latitude: number
-        longitude: number
+    markdownRemark: {
+      frontmatter: {
+        name: string
+        description: string
+        history: string
+        culture: string
+        location: {
+          latitude: number
+          longitude: number
+        }
       }
     }
   }
 }
 
 const DestinationPage: React.FC<DestinationPageProps> = ({ data }) => {
-  const { destination } = data
+  const { frontmatter: destination } = data.markdownRemark
 
   return (
     <Layout>
@@ -48,18 +50,21 @@ const DestinationPage: React.FC<DestinationPageProps> = ({ data }) => {
   )
 }
 
+
 export default DestinationPage
 
 export const query = graphql`
   query($id: String!) {
-    destination(id: { eq: $id }) {
-      name
-      description
-      history
-      culture
-      location {
-        latitude
-        longitude
+    markdownRemark(id: { eq: $id }) {
+      frontmatter {
+        name
+        description
+        history
+        culture
+        location {
+          latitude
+          longitude
+        }
       }
     }
   }

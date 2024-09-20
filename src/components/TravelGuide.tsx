@@ -7,10 +7,23 @@ interface TravelGuideProps {
   destinationName: string
 }
 
+interface TravelGuideData {
+  id: string
+  destinationName: string
+  threeDay: string
+  fiveDay: string
+}
+
+interface QueryData {
+  allTravelGuide: {
+    nodes: TravelGuideData[]
+  }
+}
+
 const TravelGuide: React.FC<TravelGuideProps> = ({ destinationName }) => {
-  const data = useStaticQuery(graphql`
+  const data = useStaticQuery<QueryData>(graphql`
     query {
-      allTravelGuides {
+      allTravelGuide {
         nodes {
           id
           destinationName
@@ -21,8 +34,8 @@ const TravelGuide: React.FC<TravelGuideProps> = ({ destinationName }) => {
     }
   `)
 
-  const guide = data.allTravelGuides.nodes.find(
-    (guide: any) => guide.destinationName === destinationName
+  const guide = data.allTravelGuide.nodes.find(
+    (guide) => guide.destinationName === destinationName
   )
 
   if (!guide) return null

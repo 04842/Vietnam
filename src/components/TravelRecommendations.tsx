@@ -9,10 +9,16 @@ interface Destination {
   slug: string
 }
 
+interface QueryData {
+  allDestination: {
+    nodes: Destination[]
+  }
+}
+
 const TravelRecommendations: React.FC = () => {
-  const data = useStaticQuery(graphql`
+  const data = useStaticQuery<QueryData>(graphql`
     query {
-      allDestinations(limit: 5, sort: { fields: popularity, order: DESC }) {
+      allDestination(sort: {popularity: DESC}, limit: 5) {
         nodes {
           id
           name
@@ -22,18 +28,22 @@ const TravelRecommendations: React.FC = () => {
     }
   `)
 
-  const destinations: Destination[] = data.allDestinations.nodes
+  const destinations = data.allDestination.nodes
 
   return (
     <section>
       <h2>熱門目的地推薦</h2>
-      <ul>
-        {destinations.map((destination) => (
-          <li key={destination.id}>
-            <Link to={`/destination/${destination.slug}`}>{destination.name}</Link>
-          </li>
-        ))}
-      </ul>
+      {destinations.length > 0 ? (
+        <ul>
+          {destinations.map((destination) => (
+            <li key={destination.id}>
+              <Link to={`/destination/${destination.slug}`}>{destination.name}</Link>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>目前沒有熱門目的地推薦。</p>
+      )}
     </section>
   )
 }

@@ -1,0 +1,70 @@
+ ERROR  UNKNOWN
+
+Truncated page data information for the failed page "/booking/": {
+  "errors": {},
+  "path": "/booking/",
+  "slicesMap": {},
+  "pageContext": {}
+}
+
+failed Building static HTML for pages - 2.995s                                                                                                             
+
+ ERROR #95313  HTML.COMPILATION
+
+Building static HTML failed for path "/booking/"
+
+See our docs page for more info on this error: https://gatsby.dev/debug-html
+
+
+
+
+
+  WebpackError: Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: undefined.    
+
+  - react-dom-server.node.production.min.js:77
+    [gatsby-starter-default]/[react-dom]/cjs/react-dom-server.node.production.min.js:77:71
+
+  - react-dom-server.node.production.min.js:78
+    [gatsby-starter-default]/[react-dom]/cjs/react-dom-server.node.production.min.js:78:81
+
+  - react-dom-server.node.production.min.js:81
+    [gatsby-starter-default]/[react-dom]/cjs/react-dom-server.node.production.min.js:81:91
+
+  - react-dom-server.node.production.min.js:80
+    [gatsby-starter-default]/[react-dom]/cjs/react-dom-server.node.production.min.js:80:140
+
+  - react-dom-server.node.production.min.js:78
+    [gatsby-starter-default]/[react-dom]/cjs/react-dom-server.node.production.min.js:78:345
+
+  - react-dom-server.node.production.min.js:81
+    [gatsby-starter-default]/[react-dom]/cjs/react-dom-server.node.production.min.js:81:91
+
+  - react-dom-server.node.production.min.js:73
+    [gatsby-starter-default]/[react-dom]/cjs/react-dom-server.node.production.min.js:73:145
+
+  - react-dom-server.node.production.min.js:78
+    [gatsby-starter-default]/[react-dom]/cjs/react-dom-server.node.production.min.js:78:81
+
+  - react-dom-server.node.production.min.js:81
+    [gatsby-starter-default]/[react-dom]/cjs/react-dom-server.node.production.min.js:81:91
+
+  - react-dom-server.node.production.min.js:80
+    [gatsby-starter-default]/[react-dom]/cjs/react-dom-server.node.production.min.js:80:140
+
+  - react-dom-server.node.production.min.js:78
+    [gatsby-starter-default]/[react-dom]/cjs/react-dom-server.node.production.min.js:78:345
+
+  - react-dom-server.node.production.min.js:81
+    [gatsby-starter-default]/[react-dom]/cjs/react-dom-server.node.production.min.js:81:91
+
+  - react-dom-server.node.production.min.js:73
+    [gatsby-starter-default]/[react-dom]/cjs/react-dom-server.node.production.min.js:73:145
+
+  - react-dom-server.node.production.min.js:78
+    [gatsby-starter-default]/[react-dom]/cjs/react-dom-server.node.production.min.js:78:81
+
+  - react-dom-server.node.production.min.js:81
+    [gatsby-starter-default]/[react-dom]/cjs/react-dom-server.node.production.min.js:81:91
+
+  - react-dom-server.node.production.min.js:80
+    [gatsby-starter-default]/[react-dom]/cjs/react-dom-server.node.production.min.js:80:140

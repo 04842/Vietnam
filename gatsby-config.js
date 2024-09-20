@@ -1,77 +1,107 @@
-/**
- * Configure your Gatsby site with this file.
- *
- * See: https://www.gatsbyjs.com/docs/reference/config-files/gatsby-config/
- */
+const path = require('path')
 
-/**
- * @type {import('gatsby').GatsbyConfig}
- */
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
-    siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
+    title: `Vietnam Travel Guide`,
+    description: `Discover the beauty of Vietnam with our comprehensive travel guide.`,
+    author: `@yourcompany`,
+    siteUrl: `https://yourvietnamtravelsite.com/`,
   },
   plugins: [
     `gatsby-plugin-image`,
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-offline`,
+    `gatsby-transformer-remark`,
+    `gatsby-transformer-json`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/images`,
+        path: path.join(__dirname, `src`, `images`),
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `data`,
+        path: path.join(__dirname, `src`, `data`),
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `markdown-pages`,
+        path: path.join(__dirname, `src`, `data`, `markdown-pages`),
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `activities`,
+        path: path.join(__dirname, `src`, `data`, `activities`),
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `cars`,
+        path: path.join(__dirname, `src`, `data`, `cars`),
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `hotels`,
+        path: path.join(__dirname, `src`, `data`, `hotels`),
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `flights`,
+        path: path.join(__dirname, `src`, `data`, `flights`),
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `local-activities`,
+        path: path.join(__dirname, `src`, `data`, `local-activities`),
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `promotions`,
+        path: path.join(__dirname, `src`, `data`, `promotions`),
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `travel-guides`,
+        path: path.join(__dirname, `src`, `data`, `travel-guides`),
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `destinations`,
+        path: path.join(__dirname, `src`, `data`, `destinations`),
+      },
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `Vietnam Travel Guide`,
+        short_name: `VN Travel`,
         start_url: `/`,
-        background_color: `#663399`,
-        // This will impact how browsers show your PWA/website
-        // https://css-tricks.com/meta-theme-color-and-trickery/
-        // theme_color: `#663399`,
-        display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        background_color: `#f7f0eb`,
+        theme_color: `#a2466c`,
+        display: `standalone`,
+        icon: `src/images/icon.png`, // 使用 Gatsby 默認圖標
       },
-    },
-  ],
-}
-
-// gatsby-config.js
-
-module.exports = {
-  plugins: [
-    `gatsby-plugin-offline`,
-    {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: `Your Travel Website`,
-        short_name: `Travel`,
-        start_url: `/`,
-        background_color: `#ffffff`,
-        theme_color: `#663399`,
-        display: `minimal-ui`,
-        icon: `src/images/icon.png`,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-sharp`,
-      options: {
-        defaults: {
-          formats: [`auto`, `webp`],
-          placeholder: `dominantColor`,
-          quality: 50,
-          breakpoints: [750, 1080, 1366, 1920],
-          backgroundColor: `transparent`,
         },
-      },
-    },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-image`,
   ],
 }

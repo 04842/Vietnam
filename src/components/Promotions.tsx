@@ -10,10 +10,16 @@ interface Promotion {
   slug: string
 }
 
+interface QueryData {
+  allPromotion: {
+    nodes: Promotion[]
+  }
+}
+
 const Promotions: React.FC = () => {
-  const data = useStaticQuery(graphql`
+  const data = useStaticQuery<QueryData>(graphql`
     query {
-      allPromotions(limit: 3, sort: { fields: startDate, order: ASC }) {
+      allPromotion(limit: 3, sort: {startDate: ASC}) {
         nodes {
           id
           title
@@ -24,19 +30,23 @@ const Promotions: React.FC = () => {
     }
   `)
 
-  const promotions: Promotion[] = data.allPromotions.nodes
+  const promotions = data.allPromotion.nodes
 
   return (
     <section>
       <h2>當前優惠活動</h2>
-      {promotions.map((promotion) => (
-        <article key={promotion.id}>
-          <h3>
-            <Link to={`/promotion/${promotion.slug}`}>{promotion.title}</Link>
-          </h3>
-          <p>{promotion.description}</p>
-        </article>
-      ))}
+      {promotions.length > 0 ? (
+        promotions.map((promotion) => (
+          <article key={promotion.id}>
+            <h3>
+              <Link to={`/promotion/${promotion.slug}`}>{promotion.title}</Link>
+            </h3>
+            <p>{promotion.description}</p>
+          </article>
+        ))
+      ) : (
+        <p>目前沒有進行中的優惠活動。</p>
+      )}
     </section>
   )
 }

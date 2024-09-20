@@ -1,31 +1,33 @@
 // src/pages/blog.tsx
 
 import React from 'react'
-import { graphql, Link } from 'gatsby'
+import { graphql, PageProps } from 'gatsby'
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
 import BlogPostCard from '../components/blog/BlogPostCard'
 
-interface BlogPageProps {
-  data: {
-    allMarkdownRemark: {
-      edges: Array<{
-        node: {
-          id: string
-          frontmatter: {
-            title: string
-            date: string
-            author: string
-            excerpt: string
-            slug: string
-          }
-        }
-      }>
-    }
+interface BlogPost {
+  id: string
+  fields: {
+    slug: string
+  }
+  frontmatter: {
+    title: string
+    date: string
+    author: string
+    excerpt: string
   }
 }
 
-const BlogPage: React.FC<BlogPageProps> = ({ data }) => {
+interface BlogPageData {
+  allMarkdownRemark: {
+    edges: Array<{
+      node: BlogPost
+    }>
+  }
+}
+
+const BlogPage: React.FC<PageProps<BlogPageData>> = ({ data }) => {
   const posts = data.allMarkdownRemark.edges
 
   return (
@@ -34,7 +36,13 @@ const BlogPage: React.FC<BlogPageProps> = ({ data }) => {
       <h1>旅遊博客</h1>
       <div>
         {posts.map(({ node }) => (
-          <BlogPostCard key={node.id} post={node.frontmatter} />
+          <BlogPostCard 
+            key={node.id} 
+            post={{
+              ...node.frontmatter, 
+              slug: node.fields.slug
+            }} 
+          />
         ))}
       </div>
     </Layout>
@@ -46,18 +54,20 @@ export default BlogPage
 export const query = graphql`
   query {
     allMarkdownRemark(
-      sort: { fields: [frontmatter___date], order: DESC }
-      filter: { fileAbsolutePath: { regex: "/blog/" } }
+      sort: { frontmatter: { date: DESC } }
+      filter: { fields: { slug: { regex: "/blog/" } } }
     ) {
       edges {
         node {
           id
+          fields {
+            slug
+          }
           frontmatter {
             title
             date(formatString: "MMMM DD, YYYY")
             author
             excerpt
-            slug
           }
         }
       }
