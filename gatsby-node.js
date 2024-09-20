@@ -256,6 +256,8 @@ exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions
 
   // Create DSG page
+  // Create pages for destinations from markdown files
+
   createPage({
     path: "/using-dsg",
     component: require.resolve("./src/templates/using-dsg.js"),
@@ -339,13 +341,17 @@ exports.createPages = async ({ actions, graphql }) => {
   }
 
   markdownResult.data.allMarkdownRemark.edges.forEach(({ node }) => {
-    createPage({
-      path: `/destination/${node.frontmatter.name.toLowerCase().replace(/ /g, '-')}`,
-      component: path.resolve(`src/templates/destination.tsx`),
-      context: {
-        id: node.id,
-      },
-    })
+    if (node.frontmatter && node.frontmatter.name) {
+      createPage({
+        path: `/destination/${node.frontmatter.name.toLowerCase().replace(/ /g, '-')}`,
+        component: path.resolve(`src/templates/destination.tsx`),
+        context: {
+          id: node.id,
+        },
+      })
+    } else {
+      console.warn(`Skipping creation of destination page for node with id ${node.id} due to missing name in frontmatter`)
+    }
   })
 }
 
