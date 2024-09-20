@@ -18,21 +18,21 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `markdown-pages`,
-        path: `./src/data/markdown-pages`,
+        path: `${__dirname}/src/data/markdown-pages`,
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `data`,
-        path: `./src/data`,
+        path: `${__dirname}/src/data`,
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `markdown-pages`,
-        path: `./src/data/markdown-pages`,
+        path: `${__dirname}/src/data/markdown-pages`,
         ignore: [`**/\.*`], // ignore files starting with a dot
       },
     },
@@ -40,7 +40,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `activities`,
-        path: `./src/data/activities`,
+        path: `${__dirname}/src/data/activities`,
         ignore: [`**/\.*`], // ignore files starting with a dot
       },
     },
@@ -48,7 +48,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `cars`,
-        path: `./src/data/cars`,
+        path: `${__dirname}/src/data/cars`,
         ignore: [`**/\.*`], // ignore files starting with a dot
       },
     },
@@ -56,7 +56,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `hotels`,
-        path: `./src/data/hotels`,
+        path: `${__dirname}/src/data/hotels`,
         ignore: [`**/\.*`], // ignore files starting with a dot
       },
     },
@@ -64,7 +64,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `flights`,
-        path: `./src/data/flights`,
+        path: `${__dirname}/src/data/flights`,
         ignore: [`**/\.*`],
       },
     },
@@ -72,7 +72,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `local-activities`,
-        path: `./src/data/local-activities`,
+        path: `${__dirname}/src/data/local-activities`,
         ignore: [`**/\.*`],
       },
     },
@@ -80,7 +80,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `promotions`,
-        path: `./src/data/promotions`,
+        path: `${__dirname}/src/data/promotions`,
         ignore: [`**/\.*`],
       },
     },
@@ -88,7 +88,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `travel-guides`,
-        path: `./src/data/travel-guides`,
+        path: `${__dirname}/src/data/travel-guides`,
         ignore: [`**/\.*`],
       },
     },
@@ -96,7 +96,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `destinations`,
-        path: `./src/data/destinations`,
+        path: `${__dirname}/src/data/destinations`,
         ignore: [`**/\.*`],
       },
     },
