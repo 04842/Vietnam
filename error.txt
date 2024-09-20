@@ -1,70 +1,353 @@
- ERROR  UNKNOWN
+exports.sourceNodes = ({ actions, createNodeId, createContentDigest }) => {
+  const { createNode } = actions
 
-Truncated page data information for the failed page "/booking/": {
-  "errors": {},
-  "path": "/booking/",
-  "slicesMap": {},
-  "pageContext": {}
+  const destinationData = [
+    {
+      name: "巴黎",
+      slug: "paris",
+      description: "浪漫之都，艾菲爾鐵塔的所在地"
+    },
+    // ... 更多目的地數據
+  ]
+
+  destinationData.forEach((destination, index) => {
+    const node = {
+      ...destination,
+      id: createNodeId(`destination-${index}`),
+      internal: {
+        type: "Destination",
+        contentDigest: createContentDigest(destination),
+      },
+    }
+    createNode(node)
+  })
 }
 
-failed Building static HTML for pages - 2.995s                                                                                                             
+exports.sourceNodes = ({ actions, createNodeId, createContentDigest }) => {
+  const { createNode } = actions
 
- ERROR #95313  HTML.COMPILATION
+  const destinationData = [
+    {
+      name: "巴黎",
+      slug: "paris"
+    },
+    // ... 更多目的地數據
+  ]
 
-Building static HTML failed for path "/booking/"
+  destinationData.forEach((destination, index) => {
+    const node = {
+      ...destination,
+      id: createNodeId(`destination-${index}`),
+      internal: {
+        type: "Destination",
+        contentDigest: createContentDigest(destination),
+      },
+    }
+    createNode(node)
+  })
+}
 
-See our docs page for more info on this error: https://gatsby.dev/debug-html
+exports.sourceNodes = ({ actions, createNodeId, createContentDigest }) => {
+  const { createNode } = actions
 
+  const activityData = [
+    {
+      name: "城市觀光之旅",
+      description: "探索城市的歷史和文化景點",
+      price: 50.00
+    },
+    // ... 更多活動數據
+  ]
 
+  activityData.forEach((activity, index) => {
+    const node = {
+      ...activity,
+      id: createNodeId(`activity-${index}`),
+      internal: {
+        type: "Activity",
+        contentDigest: createContentDigest(activity),
+      },
+    }
+    createNode(node)
+  })
+}
 
+exports.sourceNodes = ({ actions, createNodeId, createContentDigest }) => {
+  const { createNode } = actions
 
+  const carData = [
+    {
+      make: "Toyota",
+      model: "Corolla",
+      price: 50.00
+    },
+    // ... 更多汽車數據
+  ]
 
-  WebpackError: Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: undefined.    
+  carData.forEach((car, index) => {
+    const node = {
+      ...car,
+      id: createNodeId(`car-${index}`),
+      internal: {
+        type: "Car",
+        contentDigest: createContentDigest(car),
+      },
+    }
+    createNode(node)
+  })
+}
 
-  - react-dom-server.node.production.min.js:77
-    [gatsby-starter-default]/[react-dom]/cjs/react-dom-server.node.production.min.js:77:71
+exports.sourceNodes = ({ actions, createNodeId, createContentDigest }) => {
+  const { createNode } = actions
 
-  - react-dom-server.node.production.min.js:78
-    [gatsby-starter-default]/[react-dom]/cjs/react-dom-server.node.production.min.js:78:81
+  const hotelData = [
+    {
+      name: "Grand Hotel",
+      rating: 4.5,
+      price: 200.00
+    },
+    // ... 更多酒店數據
+  ]
 
-  - react-dom-server.node.production.min.js:81
-    [gatsby-starter-default]/[react-dom]/cjs/react-dom-server.node.production.min.js:81:91
+  hotelData.forEach((hotel, index) => {
+    const node = {
+      ...hotel,
+      id: createNodeId(`hotel-${index}`),
+      internal: {
+        type: "Hotel",
+        contentDigest: createContentDigest(hotel),
+      },
+    }
+    createNode(node)
+  })
+}
 
-  - react-dom-server.node.production.min.js:80
-    [gatsby-starter-default]/[react-dom]/cjs/react-dom-server.node.production.min.js:80:140
+exports.sourceNodes = ({ actions, createNodeId, createContentDigest }) => {
+  const { createNode } = actions
 
-  - react-dom-server.node.production.min.js:78
-    [gatsby-starter-default]/[react-dom]/cjs/react-dom-server.node.production.min.js:78:345
+  const flightData = [
+    {
+      airline: "China Airlines",
+      departureTime: "2023-06-01T10:00:00",
+      arrivalTime: "2023-06-01T14:00:00",
+      price: 500.00
+    },
+    // ... 更多航班數據
+  ]
 
-  - react-dom-server.node.production.min.js:81
-    [gatsby-starter-default]/[react-dom]/cjs/react-dom-server.node.production.min.js:81:91
+  flightData.forEach((flight, index) => {
+    const node = {
+      ...flight,
+      id: createNodeId(`flight-${index}`),
+      internal: {
+        type: "Flight",
+        contentDigest: createContentDigest(flight),
+      },
+    }
+    createNode(node)
+  })
+}
 
-  - react-dom-server.node.production.min.js:73
-    [gatsby-starter-default]/[react-dom]/cjs/react-dom-server.node.production.min.js:73:145
+exports.sourceNodes = ({ actions, createNodeId, createContentDigest }) => {
+  const { createNode } = actions
 
-  - react-dom-server.node.production.min.js:78
-    [gatsby-starter-default]/[react-dom]/cjs/react-dom-server.node.production.min.js:78:81
+  const localActivityData = [
+    {
+      destinationName: "東京",
+      activities: [
+        {
+          name: "櫻花節",
+          description: "欣賞美麗的櫻花",
+          date: "2023-04-01"
+        },
+        // ... 更多活動
+      ]
+    },
+    // ... 更多目的地的本地活動數據
+  ]
 
-  - react-dom-server.node.production.min.js:81
-    [gatsby-starter-default]/[react-dom]/cjs/react-dom-server.node.production.min.js:81:91
+  localActivityData.forEach(localActivity => {
+    const node = {
+      ...localActivity,
+      id: createNodeId(`local-activity-${localActivity.destinationName}`),
+      internal: {
+        type: "LocalActivity",
+        contentDigest: createContentDigest(localActivity),
+      },
+    }
+    createNode(node)
+  })
+}
 
-  - react-dom-server.node.production.min.js:80
-    [gatsby-starter-default]/[react-dom]/cjs/react-dom-server.node.production.min.js:80:140
+exports.sourceNodes = ({ actions, createNodeId, createContentDigest }) => {
+  const { createNode } = actions
 
-  - react-dom-server.node.production.min.js:78
-    [gatsby-starter-default]/[react-dom]/cjs/react-dom-server.node.production.min.js:78:345
+  const promotionData = [
+    {
+      title: "夏季特惠",
+      description: "預訂夏季旅遊行程，享受20%折扣",
+      slug: "summer-special",
+      startDate: "2023-06-01"
+    },
+    // ... 更多優惠活動數據
+  ]
 
-  - react-dom-server.node.production.min.js:81
-    [gatsby-starter-default]/[react-dom]/cjs/react-dom-server.node.production.min.js:81:91
+  promotionData.forEach(promotion => {
+    const node = {
+      ...promotion,
+      id: createNodeId(`promotion-${promotion.slug}`),
+      internal: {
+        type: "Promotion",
+        contentDigest: createContentDigest(promotion),
+      },
+    }
+    createNode(node)
+  })
+}
 
-  - react-dom-server.node.production.min.js:73
-    [gatsby-starter-default]/[react-dom]/cjs/react-dom-server.node.production.min.js:73:145
+exports.sourceNodes = ({ actions, createNodeId, createContentDigest }) => {
+  const { createNode } = actions
 
-  - react-dom-server.node.production.min.js:78
-    [gatsby-starter-default]/[react-dom]/cjs/react-dom-server.node.production.min.js:78:81
+  const travelGuideData = [
+    {
+      destinationName: "東京",
+      threeDay: "第一天：參觀淺草寺...",
+      fiveDay: "第一天：參觀淺草寺..."
+    },
+    // ... 更多旅遊攻略數據
+  ]
 
-  - react-dom-server.node.production.min.js:81
-    [gatsby-starter-default]/[react-dom]/cjs/react-dom-server.node.production.min.js:81:91
+  travelGuideData.forEach(guide => {
+    const node = {
+      ...guide,
+      id: createNodeId(`travel-guide-${guide.destinationName}`),
+      internal: {
+        type: "TravelGuide",
+        contentDigest: createContentDigest(guide),
+      },
+    }
+    createNode(node)
+  })
+}
 
-  - react-dom-server.node.production.min.js:80
-    [gatsby-starter-default]/[react-dom]/cjs/react-dom-server.node.production.min.js:80:140
+exports.createPages = async ({ actions, graphql }) => {
+  const { createPage } = actions
+
+  // Create DSG page
+  createPage({
+    path: "/using-dsg",
+    component: require.resolve("./src/templates/using-dsg.js"),
+    context: {},
+    defer: true,
+  })
+
+  // Create pages for destinations
+  const destinationResult = await graphql(`
+    query {
+      allDestination {
+        nodes {
+          slug
+        }
+      }
+    }
+  `)
+
+  if (destinationResult.errors) {
+    console.error(destinationResult.errors)
+    throw destinationResult.errors
+  }
+
+  destinationResult.data.allDestination.nodes.forEach(node => {
+    createPage({
+      path: `/destination/${node.slug}`,
+      component: require.resolve("./src/templates/destination.tsx"),
+      context: {
+        slug: node.slug,
+      },
+    })
+  })
+
+  // Create pages for blog posts
+  const blogResult = await graphql(`
+    query {
+      allMarkdownRemark {
+        nodes {
+          fields {
+            slug
+          }
+        }
+      }
+    }
+  `)
+
+  if (blogResult.errors) {
+    console.error(blogResult.errors)
+    throw blogResult.errors
+  }
+
+  blogResult.data.allMarkdownRemark.nodes.forEach(node => {
+    createPage({
+      path: `/blog/${node.fields.slug}`,
+      component: require.resolve("./src/templates/blog-post.tsx"),
+      context: {
+        slug: node.fields.slug,
+      },
+    })
+  })
+}
+
+exports.onCreateNode = ({ node, actions, getNode }) => {
+  const { createNodeField } = actions
+
+  if (node.internal.type === `MarkdownRemark`) {
+    const value = createFilePath({ node, getNode })
+    createNodeField({
+      name: `slug`,
+      node,
+      value,
+    })
+  }
+}
+
+const { createFilePath } = require(`gatsby-source-filesystem`)
+
+exports.onCreateNode = ({ node, getNode, actions }) => {
+  const { createNodeField } = actions
+  if (node.internal.type === `MarkdownRemark`) {
+    const slug = createFilePath({ node, getNode, basePath: `pages` })
+    createNodeField({
+      node,
+      name: `slug`,
+      value: slug,
+    })
+  }
+}
+
+exports.createPages = async ({ actions, graphql }) => {
+  const { createPage } = actions
+
+  const result = await graphql(`
+    {
+      allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/destinations/" } }) {
+        edges {
+          node {
+            id
+            frontmatter {
+              name
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+    createPage({
+      path: `/destination/${node.frontmatter.name.toLowerCase().replace(/ /g, '-')}`,
+      component: path.resolve(`src/templates/destination.tsx`),
+      context: {
+        id: node.id,
+      },
+    })
+  })
+}

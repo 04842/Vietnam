@@ -131,9 +131,14 @@ exports.createSchemaCustomization = ({ actions }) => {
   `
   createTypes(typeDefs)
 }
+
+const path = require('path')
+const { createFilePath } = require(`gatsby-source-filesystem`)
+
 exports.sourceNodes = ({ actions, createNodeId, createContentDigest }) => {
   const { createNode } = actions
 
+  // 目的地數據
   const destinationData = [
     {
       name: "巴黎",
@@ -143,46 +148,7 @@ exports.sourceNodes = ({ actions, createNodeId, createContentDigest }) => {
     // ... 更多目的地數據
   ]
 
-  destinationData.forEach((destination, index) => {
-    const node = {
-      ...destination,
-      id: createNodeId(`destination-${index}`),
-      internal: {
-        type: "Destination",
-        contentDigest: createContentDigest(destination),
-      },
-    }
-    createNode(node)
-  })
-}
-
-exports.sourceNodes = ({ actions, createNodeId, createContentDigest }) => {
-  const { createNode } = actions
-
-  const destinationData = [
-    {
-      name: "巴黎",
-      slug: "paris"
-    },
-    // ... 更多目的地數據
-  ]
-
-  destinationData.forEach((destination, index) => {
-    const node = {
-      ...destination,
-      id: createNodeId(`destination-${index}`),
-      internal: {
-        type: "Destination",
-        contentDigest: createContentDigest(destination),
-      },
-    }
-    createNode(node)
-  })
-}
-
-exports.sourceNodes = ({ actions, createNodeId, createContentDigest }) => {
-  const { createNode } = actions
-
+  // 活動數據
   const activityData = [
     {
       name: "城市觀光之旅",
@@ -192,22 +158,7 @@ exports.sourceNodes = ({ actions, createNodeId, createContentDigest }) => {
     // ... 更多活動數據
   ]
 
-  activityData.forEach((activity, index) => {
-    const node = {
-      ...activity,
-      id: createNodeId(`activity-${index}`),
-      internal: {
-        type: "Activity",
-        contentDigest: createContentDigest(activity),
-      },
-    }
-    createNode(node)
-  })
-}
-
-exports.sourceNodes = ({ actions, createNodeId, createContentDigest }) => {
-  const { createNode } = actions
-
+  // 汽車數據
   const carData = [
     {
       make: "Toyota",
@@ -217,22 +168,7 @@ exports.sourceNodes = ({ actions, createNodeId, createContentDigest }) => {
     // ... 更多汽車數據
   ]
 
-  carData.forEach((car, index) => {
-    const node = {
-      ...car,
-      id: createNodeId(`car-${index}`),
-      internal: {
-        type: "Car",
-        contentDigest: createContentDigest(car),
-      },
-    }
-    createNode(node)
-  })
-}
-
-exports.sourceNodes = ({ actions, createNodeId, createContentDigest }) => {
-  const { createNode } = actions
-
+  // 酒店數據
   const hotelData = [
     {
       name: "Grand Hotel",
@@ -242,22 +178,7 @@ exports.sourceNodes = ({ actions, createNodeId, createContentDigest }) => {
     // ... 更多酒店數據
   ]
 
-  hotelData.forEach((hotel, index) => {
-    const node = {
-      ...hotel,
-      id: createNodeId(`hotel-${index}`),
-      internal: {
-        type: "Hotel",
-        contentDigest: createContentDigest(hotel),
-      },
-    }
-    createNode(node)
-  })
-}
-
-exports.sourceNodes = ({ actions, createNodeId, createContentDigest }) => {
-  const { createNode } = actions
-
+  // 航班數據
   const flightData = [
     {
       airline: "China Airlines",
@@ -268,22 +189,7 @@ exports.sourceNodes = ({ actions, createNodeId, createContentDigest }) => {
     // ... 更多航班數據
   ]
 
-  flightData.forEach((flight, index) => {
-    const node = {
-      ...flight,
-      id: createNodeId(`flight-${index}`),
-      internal: {
-        type: "Flight",
-        contentDigest: createContentDigest(flight),
-      },
-    }
-    createNode(node)
-  })
-}
-
-exports.sourceNodes = ({ actions, createNodeId, createContentDigest }) => {
-  const { createNode } = actions
-
+  // 本地活動數據
   const localActivityData = [
     {
       destinationName: "東京",
@@ -299,22 +205,7 @@ exports.sourceNodes = ({ actions, createNodeId, createContentDigest }) => {
     // ... 更多目的地的本地活動數據
   ]
 
-  localActivityData.forEach(localActivity => {
-    const node = {
-      ...localActivity,
-      id: createNodeId(`local-activity-${localActivity.destinationName}`),
-      internal: {
-        type: "LocalActivity",
-        contentDigest: createContentDigest(localActivity),
-      },
-    }
-    createNode(node)
-  })
-}
-
-exports.sourceNodes = ({ actions, createNodeId, createContentDigest }) => {
-  const { createNode } = actions
-
+  // 優惠活動數據
   const promotionData = [
     {
       title: "夏季特惠",
@@ -325,22 +216,7 @@ exports.sourceNodes = ({ actions, createNodeId, createContentDigest }) => {
     // ... 更多優惠活動數據
   ]
 
-  promotionData.forEach(promotion => {
-    const node = {
-      ...promotion,
-      id: createNodeId(`promotion-${promotion.slug}`),
-      internal: {
-        type: "Promotion",
-        contentDigest: createContentDigest(promotion),
-      },
-    }
-    createNode(node)
-  })
-}
-
-exports.sourceNodes = ({ actions, createNodeId, createContentDigest }) => {
-  const { createNode } = actions
-
+  // 旅遊攻略數據
   const travelGuideData = [
     {
       destinationName: "東京",
@@ -350,17 +226,30 @@ exports.sourceNodes = ({ actions, createNodeId, createContentDigest }) => {
     // ... 更多旅遊攻略數據
   ]
 
-  travelGuideData.forEach(guide => {
-    const node = {
-      ...guide,
-      id: createNodeId(`travel-guide-${guide.destinationName}`),
-      internal: {
-        type: "TravelGuide",
-        contentDigest: createContentDigest(guide),
-      },
-    }
-    createNode(node)
-  })
+  // 創建節點的函數
+  const createNodesForData = (data, type, idPrefix) => {
+    data.forEach((item, index) => {
+      const node = {
+        ...item,
+        id: createNodeId(`${idPrefix}-${index}`),
+        internal: {
+          type: type,
+          contentDigest: createContentDigest(item),
+        },
+      }
+      createNode(node)
+    })
+  }
+
+  // 為每種數據類型創建節點
+  createNodesForData(destinationData, "Destination", "destination")
+  createNodesForData(activityData, "Activity", "activity")
+  createNodesForData(carData, "Car", "car")
+  createNodesForData(hotelData, "Hotel", "hotel")
+  createNodesForData(flightData, "Flight", "flight")
+  createNodesForData(localActivityData, "LocalActivity", "local-activity")
+  createNodesForData(promotionData, "Promotion", "promotion")
+  createNodesForData(travelGuideData, "TravelGuide", "travel-guide")
 }
 
 exports.createPages = async ({ actions, graphql }) => {
@@ -427,39 +316,9 @@ exports.createPages = async ({ actions, graphql }) => {
       },
     })
   })
-}
 
-exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions
-
-  if (node.internal.type === `MarkdownRemark`) {
-    const value = createFilePath({ node, getNode })
-    createNodeField({
-      name: `slug`,
-      node,
-      value,
-    })
-  }
-}
-
-const { createFilePath } = require(`gatsby-source-filesystem`)
-
-exports.onCreateNode = ({ node, getNode, actions }) => {
-  const { createNodeField } = actions
-  if (node.internal.type === `MarkdownRemark`) {
-    const slug = createFilePath({ node, getNode, basePath: `pages` })
-    createNodeField({
-      node,
-      name: `slug`,
-      value: slug,
-    })
-  }
-}
-
-exports.createPages = async ({ actions, graphql }) => {
-  const { createPage } = actions
-
-  const result = await graphql(`
+  // Create pages for destinations from markdown files
+  const markdownResult = await graphql(`
     {
       allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/destinations/" } }) {
         edges {
@@ -474,7 +333,12 @@ exports.createPages = async ({ actions, graphql }) => {
     }
   `)
 
-  result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+  if (markdownResult.errors) {
+    console.error(markdownResult.errors)
+    throw markdownResult.errors
+  }
+
+  markdownResult.data.allMarkdownRemark.edges.forEach(({ node }) => {
     createPage({
       path: `/destination/${node.frontmatter.name.toLowerCase().replace(/ /g, '-')}`,
       component: path.resolve(`src/templates/destination.tsx`),
@@ -483,4 +347,16 @@ exports.createPages = async ({ actions, graphql }) => {
       },
     })
   })
+}
+
+exports.onCreateNode = ({ node, getNode, actions }) => {
+  const { createNodeField } = actions
+  if (node.internal.type === `MarkdownRemark`) {
+    const slug = createFilePath({ node, getNode, basePath: `pages` })
+    createNodeField({
+      node,
+      name: `slug`,
+      value: slug,
+    })
+  }
 }
