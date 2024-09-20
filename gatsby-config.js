@@ -17,78 +17,87 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `images`,
-        path: path.join(__dirname, `src`, `images`),
+        name: `markdown-pages`,
+        path: `${__dirname}/src/data/markdown-pages`,
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `data`,
-        path: path.join(__dirname, `src`, `data`),
+        path: `${__dirname}/src/data`,
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `markdown-pages`,
-        path: path.join(__dirname, `src`, `data`, `markdown-pages`),
+        path: `${__dirname}/src/data/markdown-pages`,
+        ignore: [`**/\.*`], // ignore files starting with a dot
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `activities`,
-        path: path.join(__dirname, `src`, `data`, `activities`),
+        path: `${__dirname}/src/data/activities`,
+        ignore: [`**/\.*`], // ignore files starting with a dot
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `cars`,
-        path: path.join(__dirname, `src`, `data`, `cars`),
+        path: `${__dirname}/src/data/cars`,
+        ignore: [`**/\.*`], // ignore files starting with a dot
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `hotels`,
-        path: path.join(__dirname, `src`, `data`, `hotels`),
+        path: `${__dirname}/src/data/hotels`,
+        ignore: [`**/\.*`], // ignore files starting with a dot
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `flights`,
-        path: path.join(__dirname, `src`, `data`, `flights`),
+        path: `${__dirname}/src/data/flights`,
+        ignore: [`**/\.*`],
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `local-activities`,
-        path: path.join(__dirname, `src`, `data`, `local-activities`),
+        path: `${__dirname}/src/data/local-activities`,
+        ignore: [`**/\.*`],
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `promotions`,
-        path: path.join(__dirname, `src`, `data`, `promotions`),
+        path: `${__dirname}/src/data/promotions`,
+        ignore: [`**/\.*`],
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `travel-guides`,
-        path: path.join(__dirname, `src`, `data`, `travel-guides`),
+        path: `${__dirname}/src/data/travel-guides`,
+        ignore: [`**/\.*`],
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `destinations`,
-        path: path.join(__dirname, `src`, `data`, `destinations`),
+        path: `${__dirname}/src/data/destinations`,
+        ignore: [`**/\.*`],
       },
     },
     {
@@ -100,8 +109,8 @@ module.exports = {
         background_color: `#f7f0eb`,
         theme_color: `#a2466c`,
         display: `standalone`,
-        icon: `src/images/icon.png`, // 使用 Gatsby 默認圖標
+        icon: `src/images/icon.png`,
       },
-        },
-  ],
+    },
+    ],
 }
