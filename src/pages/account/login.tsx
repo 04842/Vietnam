@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 import { navigate } from 'gatsby'
 import Layout from '../../components/Layout'
-import SEO from '../../components/SEO'
+import SEO from '../../components/seo'
 import LoginForm from '../account/LoginForm'
 import RegisterForm from '../account/RegisterForm'
 

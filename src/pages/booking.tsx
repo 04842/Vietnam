@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
-import SEO from '../components/SEO'
+import SEO from '../components/seo'
 import FlightSearch from '../components/booking/FlightSearch'
 import HotelSearch from '../components/booking/HotelSearch'
 import ActivitySearch from '../components/booking/ActivitySearch'

@@ -3,7 +3,7 @@
 import React from 'react'
 import { graphql, HeadFC } from 'gatsby'
 import Layout from '../components/Layout'
-import SEO from '../components/SEO'
+import SEO from '../components/seo'
 import SearchBar from '../components/SearchBar'
 import TravelRecommendations from '../components/TravelRecommendations'
 import Promotions from '../components/Promotions'

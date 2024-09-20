@@ -1,9 +1,9 @@
-// src/components/SEO.tsx
+// src/components/seo.tsx
 
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 
-interface SEOProps {
+interface seoProps {
   title: string
   description?: string
   lang?: string
@@ -11,7 +11,7 @@ interface SEOProps {
   children?: React.ReactNode
 }
 
-const SEO: React.FC<SEOProps> = ({ description, lang = 'zh-TW', meta = [], title, children }) => {
+const seo: React.FC<seoProps> = ({ description, lang = 'zh-TW', meta = [], title, children }) => {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -49,4 +49,4 @@ const SEO: React.FC<SEOProps> = ({ description, lang = 'zh-TW', meta = [], title
   )
 }
 
-export default SEO
+export default seo

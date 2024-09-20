@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 import { graphql, PageProps } from 'gatsby'
 import Layout from '../components/Layout'
-import SEO from '../components/SEO'
+import SEO from '../components/seo'
 import DestinationSelector from '../components/DestinationSelector'
 import DateRangePicker from '../components/DateRangePicker'
 import ItineraryEditor from '../components/ItineraryEditor'
