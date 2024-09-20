@@ -25,7 +25,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `data`,
-        path: `${__dirname}/src/data`,
+        path: `/opt/buildhome/repo/src/data`,
       },
     },
     {
@@ -40,7 +40,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `activities`,
-        path: `${__dirname}/src/data/activities`,
+        path: `/opt/buildhome/repo/src/data/activities`,
         ignore: [`**/\.*`], // ignore files starting with a dot
       },
     },
@@ -48,7 +48,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `cars`,
-        path: `${__dirname}/src/data/cars`,
+        path: `/opt/buildhome/repo/src/data/cars`,
         ignore: [`**/\.*`], // ignore files starting with a dot
       },
     },
@@ -56,7 +56,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `hotels`,
-        path: `${__dirname}/src/data/hotels`,
+        path: `/opt/buildhome/repo/src/data/hotels`,
         ignore: [`**/\.*`], // ignore files starting with a dot
       },
     },
@@ -64,7 +64,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `flights`,
-        path: `${__dirname}/src/data/flights`,
+        path: `/opt/buildhome/repo/src/data/flights`,
         ignore: [`**/\.*`],
       },
     },
@@ -72,7 +72,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `local-activities`,
-        path: `${__dirname}/src/data/local-activities`,
+        path: `/opt/buildhome/repo/src/data/local-activities`,
         ignore: [`**/\.*`],
       },
     },
@@ -80,7 +80,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `promotions`,
-        path: `${__dirname}/src/data/promotions`,
+        path: `/opt/buildhome/repo/src/data/promotions`,
         ignore: [`**/\.*`],
       },
     },
@@ -88,7 +88,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `travel-guides`,
-        path: `${__dirname}/src/data/travel-guides`,
+        path: `/opt/buildhome/repo/src/data/travel-guides`,
         ignore: [`**/\.*`],
       },
     },
@@ -96,7 +96,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `destinations`,
-        path: `${__dirname}/src/data/destinations`,
+        path: `/opt/buildhome/repo/src/data/destinations`,
         ignore: [`**/\.*`],
       },
     },
