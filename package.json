@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "@types/react-date-range": "^1.4.9",
+    "gh-pages": "^6.1.1",
     "prettier": "^2.8.8"
   },
   "keywords": [
