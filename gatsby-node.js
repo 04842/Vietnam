@@ -133,6 +133,18 @@ exports.createSchemaCustomization = ({ actions }) => {
 }
 
 const path = require('path')
+
+exports.onCreateWebpackConfig = ({ actions }) => {
+  actions.setWebpackConfig({
+    resolve: {
+      alias: {
+        '@components': path.resolve(__dirname, 'src/components'),
+      },
+    },
+  })
+}
+
+const path = require('path')
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
 exports.sourceNodes = ({ actions, createNodeId, createContentDigest }) => {
