@@ -1,7 +1,7 @@
 // src/templates/destination.tsx
 
 import React from 'react'
-import { graphql } from 'gatsby'
+import { graphql, PageProps } from 'gatsby'
 import Layout from '../components/Layout'
 import Seo from '../components/Seo'
 import InteractiveMap from '../components/InteractiveMap'
@@ -9,24 +9,22 @@ import TravelGuide from '../components/TravelGuide'
 import LocalActivities from '../components/LocalActivities'
 import LanguageCurrencySelector from '../components/LanguageCurrencySelector'
 
-interface DestinationPageProps {
-  data: {
-    markdownRemark: {
-      frontmatter: {
-        name: string
-        description: string
-        history: string
-        culture: string
-        location: {
-          latitude: number
-          longitude: number
-        }
+interface DestinationData {
+  markdownRemark: {
+    frontmatter: {
+      name: string
+      description: string
+      history: string
+      culture: string
+      location: {
+        latitude: number
+        longitude: number
       }
     }
   }
 }
 
-const DestinationPage: React.FC<DestinationPageProps> = ({ data }) => {
+const DestinationPage: React.FC<PageProps<DestinationData>> = ({ data }) => {
   const { frontmatter: destination } = data.markdownRemark
 
   return (
@@ -50,12 +48,11 @@ const DestinationPage: React.FC<DestinationPageProps> = ({ data }) => {
   )
 }
 
-
 export default DestinationPage
 
 export const query = graphql`
-  query($id: String!, $slug: String) {
-    markdownRemark(id: { eq: $id }) {
+  query($id: String!, $slug: String!) {
+    markdownRemark(id: { eq: $id }, fields: { slug: { eq: $slug } }) {
       frontmatter {
         name
         description
@@ -66,13 +63,6 @@ export const query = graphql`
           longitude
         }
       }
-    }
-    destination(slug: { eq: $slug }) {
-      name
-      description
-      history
-      culture
-      location
     }
   }
 `

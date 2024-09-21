@@ -1,8 +1,6 @@
 // src/components/InteractiveMap.tsx
 
 import React from 'react'
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
-import 'leaflet/dist/leaflet.css'
 
 interface InteractiveMapProps {
   location: {
@@ -13,17 +11,9 @@ interface InteractiveMapProps {
 
 const InteractiveMap: React.FC<InteractiveMapProps> = ({ location }) => {
   return (
-    <MapContainer center={[location.latitude, location.longitude]} zoom={13} style={{ height: '400px', width: '100%' }}>
-      <TileLayer
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-      />
-      <Marker position={[location.latitude, location.longitude]}>
-        <Popup>
-          這裡是目的地的中心位置
-        </Popup>
-      </Marker>
-    </MapContainer>
+    <div style={{ height: '400px', width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#f0f0f0' }}>
+      <p>此處曾經有一個地圖，坐標為：[{location.latitude}, {location.longitude}]</p>
+    </div>
   )
 }
 

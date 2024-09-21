@@ -1,353 +1,69 @@
-exports.sourceNodes = ({ actions, createNodeId, createContentDigest }) => {
-  const { createNode } = actions
+PS D:\GitHub\04842\Vietnam> npm run build
 
-  const destinationData = [
-    {
-      name: "巴黎",
-      slug: "paris",
-      description: "浪漫之都，艾菲爾鐵塔的所在地"
-    },
-    // ... 更多目的地數據
-  ]
+> gatsby-starter-default@0.1.0 build
+> gatsby build
 
-  destinationData.forEach((destination, index) => {
-    const node = {
-      ...destination,
-      id: createNodeId(`destination-${index}`),
-      internal: {
-        type: "Destination",
-        contentDigest: createContentDigest(destination),
-      },
-    }
-    createNode(node)
-  })
-}
+success compile gatsby files - 1.999s
+success load gatsby config - 0.073s
 
-exports.sourceNodes = ({ actions, createNodeId, createContentDigest }) => {
-  const { createNode } = actions
+ ERROR  UNKNOWN
 
-  const destinationData = [
-    {
-      name: "巴黎",
-      slug: "paris"
-    },
-    // ... 更多目的地數據
-  ]
+Error in "D:/GitHub/04842/Vietnam/gatsby-node": await is only valid in async functions and the top level bodies of modules
 
-  destinationData.forEach((destination, index) => {
-    const node = {
-      ...destination,
-      id: createNodeId(`destination-${index}`),
-      internal: {
-        type: "Destination",
-        contentDigest: createContentDigest(destination),
-      },
-    }
-    createNode(node)
-  })
-}
 
-exports.sourceNodes = ({ actions, createNodeId, createContentDigest }) => {
-  const { createNode } = actions
 
-  const activityData = [
-    {
-      name: "城市觀光之旅",
-      description: "探索城市的歷史和文化景點",
-      price: 50.00
-    },
-    // ... 更多活動數據
-  ]
+  Error: D:\GitHub\04842\Vietnam\gatsby-node.js:323
+    const blogResult = await graphql(`
+                       ^^^^^
+  SyntaxError: await is only valid in async functions and the top level bodies of modules
 
-  activityData.forEach((activity, index) => {
-    const node = {
-      ...activity,
-      id: createNodeId(`activity-${index}`),
-      internal: {
-        type: "Activity",
-        contentDigest: createContentDigest(activity),
-      },
-    }
-    createNode(node)
-  })
-}
+  - vm:76 internalCompileFunction
+    node:internal/vm:76:18
 
-exports.sourceNodes = ({ actions, createNodeId, createContentDigest }) => {
-  const { createNode } = actions
+  - loader:1283 wrapSafe
+    node:internal/modules/cjs/loader:1283:20
 
-  const carData = [
-    {
-      make: "Toyota",
-      model: "Corolla",
-      price: 50.00
-    },
-    // ... 更多汽車數據
-  ]
+  - loader:1328 Module._compile
+    node:internal/modules/cjs/loader:1328:27
 
-  carData.forEach((car, index) => {
-    const node = {
-      ...car,
-      id: createNodeId(`car-${index}`),
-      internal: {
-        type: "Car",
-        contentDigest: createContentDigest(car),
-      },
-    }
-    createNode(node)
-  })
-}
+  - loader:1422 Object.Module._extensions..js
+    node:internal/modules/cjs/loader:1422:10
 
-exports.sourceNodes = ({ actions, createNodeId, createContentDigest }) => {
-  const { createNode } = actions
+  - loader:1203 Module.load
+    node:internal/modules/cjs/loader:1203:32
 
-  const hotelData = [
-    {
-      name: "Grand Hotel",
-      rating: 4.5,
-      price: 200.00
-    },
-    // ... 更多酒店數據
-  ]
+  - loader:1019 Function.Module._load
+    node:internal/modules/cjs/loader:1019:12
 
-  hotelData.forEach((hotel, index) => {
-    const node = {
-      ...hotel,
-      id: createNodeId(`hotel-${index}`),
-      internal: {
-        type: "Hotel",
-        contentDigest: createContentDigest(hotel),
-      },
-    }
-    createNode(node)
-  })
-}
+  - translators:203 ModuleWrap.<anonymous>
+    node:internal/modules/esm/translators:203:29
 
-exports.sourceNodes = ({ actions, createNodeId, createContentDigest }) => {
-  const { createNode } = actions
+  - module_job:195 ModuleJob.run
+    node:internal/modules/esm/module_job:195:25
 
-  const flightData = [
-    {
-      airline: "China Airlines",
-      departureTime: "2023-06-01T10:00:00",
-      arrivalTime: "2023-06-01T14:00:00",
-      price: 500.00
-    },
-    // ... 更多航班數據
-  ]
+  - loader:337 ModuleLoader.import
+    node:internal/modules/esm/loader:337:24
 
-  flightData.forEach((flight, index) => {
-    const node = {
-      ...flight,
-      id: createNodeId(`flight-${index}`),
-      internal: {
-        type: "Flight",
-        contentDigest: createContentDigest(flight),
-      },
-    }
-    createNode(node)
-  })
-}
+  - module:432 importModuleDynamicallyWrapper
+    node:internal/vm/module:432:15
 
-exports.sourceNodes = ({ actions, createNodeId, createContentDigest }) => {
-  const { createNode } = actions
+  - resolve-module-exports.ts:218 resolveModuleExports
+    [Vietnam]/[gatsby]/src/bootstrap/resolve-module-exports.ts:218:33
 
-  const localActivityData = [
-    {
-      destinationName: "東京",
-      activities: [
-        {
-          name: "櫻花節",
-          description: "欣賞美麗的櫻花",
-          date: "2023-04-01"
-        },
-        // ... 更多活動
-      ]
-    },
-    // ... 更多目的地的本地活動數據
-  ]
+  - validate.ts:464 collatePluginAPIs
+    [Vietnam]/[gatsby]/src/bootstrap/load-plugins/validate.ts:464:31
 
-  localActivityData.forEach(localActivity => {
-    const node = {
-      ...localActivity,
-      id: createNodeId(`local-activity-${localActivity.destinationName}`),
-      internal: {
-        type: "LocalActivity",
-        contentDigest: createContentDigest(localActivity),
-      },
-    }
-    createNode(node)
-  })
-}
+  - index.ts:64 loadPlugins
+    [Vietnam]/[gatsby]/src/bootstrap/load-plugins/index.ts:64:42
 
-exports.sourceNodes = ({ actions, createNodeId, createContentDigest }) => {
-  const { createNode } = actions
+  - initialize.ts:203 initialize
+    [Vietnam]/[gatsby]/src/services/initialize.ts:203:28
 
-  const promotionData = [
-    {
-      title: "夏季特惠",
-      description: "預訂夏季旅遊行程，享受20%折扣",
-      slug: "summer-special",
-      startDate: "2023-06-01"
-    },
-    // ... 更多優惠活動數據
-  ]
+  - index.ts:48 bootstrap
+    [Vietnam]/[gatsby]/src/bootstrap/index.ts:48:9
 
-  promotionData.forEach(promotion => {
-    const node = {
-      ...promotion,
-      id: createNodeId(`promotion-${promotion.slug}`),
-      internal: {
-        type: "Promotion",
-        contentDigest: createContentDigest(promotion),
-      },
-    }
-    createNode(node)
-  })
-}
+  - build.ts:138 build
+    [Vietnam]/[gatsby]/src/commands/build.ts:138:5
 
-exports.sourceNodes = ({ actions, createNodeId, createContentDigest }) => {
-  const { createNode } = actions
 
-  const travelGuideData = [
-    {
-      destinationName: "東京",
-      threeDay: "第一天：參觀淺草寺...",
-      fiveDay: "第一天：參觀淺草寺..."
-    },
-    // ... 更多旅遊攻略數據
-  ]
-
-  travelGuideData.forEach(guide => {
-    const node = {
-      ...guide,
-      id: createNodeId(`travel-guide-${guide.destinationName}`),
-      internal: {
-        type: "TravelGuide",
-        contentDigest: createContentDigest(guide),
-      },
-    }
-    createNode(node)
-  })
-}
-
-exports.createPages = async ({ actions, graphql }) => {
-  const { createPage } = actions
-
-  // Create DSG page
-  createPage({
-    path: "/using-dsg",
-    component: require.resolve("./src/templates/using-dsg.js"),
-    context: {},
-    defer: true,
-  })
-
-  // Create pages for destinations
-  const destinationResult = await graphql(`
-    query {
-      allDestination {
-        nodes {
-          slug
-        }
-      }
-    }
-  `)
-
-  if (destinationResult.errors) {
-    console.error(destinationResult.errors)
-    throw destinationResult.errors
-  }
-
-  destinationResult.data.allDestination.nodes.forEach(node => {
-    createPage({
-      path: `/destination/${node.slug}`,
-      component: require.resolve("./src/templates/destination.tsx"),
-      context: {
-        slug: node.slug,
-      },
-    })
-  })
-
-  // Create pages for blog posts
-  const blogResult = await graphql(`
-    query {
-      allMarkdownRemark {
-        nodes {
-          fields {
-            slug
-          }
-        }
-      }
-    }
-  `)
-
-  if (blogResult.errors) {
-    console.error(blogResult.errors)
-    throw blogResult.errors
-  }
-
-  blogResult.data.allMarkdownRemark.nodes.forEach(node => {
-    createPage({
-      path: `/blog/${node.fields.slug}`,
-      component: require.resolve("./src/templates/blog-post.tsx"),
-      context: {
-        slug: node.fields.slug,
-      },
-    })
-  })
-}
-
-exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions
-
-  if (node.internal.type === `MarkdownRemark`) {
-    const value = createFilePath({ node, getNode })
-    createNodeField({
-      name: `slug`,
-      node,
-      value,
-    })
-  }
-}
-
-const { createFilePath } = require(`gatsby-source-filesystem`)
-
-exports.onCreateNode = ({ node, getNode, actions }) => {
-  const { createNodeField } = actions
-  if (node.internal.type === `MarkdownRemark`) {
-    const slug = createFilePath({ node, getNode, basePath: `pages` })
-    createNodeField({
-      node,
-      name: `slug`,
-      value: slug,
-    })
-  }
-}
-
-exports.createPages = async ({ actions, graphql }) => {
-  const { createPage } = actions
-
-  const result = await graphql(`
-    {
-      allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/destinations/" } }) {
-        edges {
-          node {
-            id
-            frontmatter {
-              name
-            }
-          }
-        }
-      }
-    }
-  `)
-
-  result.data.allMarkdownRemark.edges.forEach(({ node }) => {
-    createPage({
-      path: `/destination/${node.frontmatter.name.toLowerCase().replace(/ /g, '-')}`,
-      component: path.resolve(`src/templates/destination.tsx`),
-      context: {
-        id: node.id,
-      },
-    })
-  })
-}
+not finished load plugins - 0.859s      

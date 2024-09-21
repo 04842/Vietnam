@@ -266,36 +266,109 @@ exports.createPages = async ({ actions, graphql }) => {
   })
 
   // Create pages for destinations
-  const destinationResult = await graphql(`
-    query {
-      allDestination {
-        nodes {
-          slug
+  const markdownResult = await graphql(`
+    {
+      allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/destinations/" } }) {
+        edges {
+          node {
+            id
+            frontmatter {
+              name
+            }
+            fields {
+              slug
+            }
+          }
         }
       }
     }
   `)
 
-  if (destinationResult.errors) {
-    console.error(destinationResult.errors)
-    throw destinationResult.errors
+  console.log('Markdown query result:', JSON.stringify(markdownResult, null, 2))
+
+  if (markdownResult.errors) {
+    console.error(markdownResult.errors)
+    throw markdownResult.errors
   }
 
-  destinationResult.data.allDestination.nodes.forEach(node => {
-    createPage({
-      path: `/destination/${node.slug}`,
-      component: require.resolve("./src/templates/destination.tsx"),
-      context: {
-        slug: node.slug,
-      },
-    })
+  markdownResult.data.allMarkdownRemark.edges.forEach(({ node }) => {
+    console.log('Processing node:', node.id, node.fields.slug, node.frontmatter.name)
+    if (node.frontmatter && node.frontmatter.name) {
+      createPage({
+        path: `/destination/${node.fields.slug}`,
+        component: path.resolve(`src/templates/destination.tsx`),
+        context: {
+          id: node.id,
+          slug: node.fields.slug,
+        },
+      })
+      console.log('Created page for:', node.frontmatter.name, 'with path:', `/destination/${node.fields.slug}`)
+    } else {
+      console.warn(`Skipping creation of destination page for node with id ${node.id} due to missing name in frontmatter`)
+    }
+  })
+}
+
+exports.createPages = async ({ actions, graphql }) => {
+  const { createPage } = actions
+
+  // Create DSG page
+  createPage({
+    path: "/using-dsg",
+    component: require.resolve("./src/templates/using-dsg.js"),
+    context: {},
+    defer: true,
+  })
+
+  // Create pages for destinations
+  const markdownResult = await graphql(`
+    {
+      allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/destinations/" } }) {
+        edges {
+          node {
+            id
+            frontmatter {
+              name
+            }
+            fields {
+              slug
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  console.log('Markdown query result:', JSON.stringify(markdownResult, null, 2))
+
+  if (markdownResult.errors) {
+    console.error(markdownResult.errors)
+    throw markdownResult.errors
+  }
+
+  markdownResult.data.allMarkdownRemark.edges.forEach(({ node }) => {
+    console.log('Processing node:', node.id, node.fields.slug, node.frontmatter.name)
+    if (node.frontmatter && node.frontmatter.name) {
+      createPage({
+        path: `/destination/${node.fields.slug}`,
+        component: path.resolve(`src/templates/destination.tsx`),
+        context: {
+          id: node.id,
+          slug: node.fields.slug,
+        },
+      })
+      console.log('Created page for:', node.frontmatter.name, 'with path:', `/destination/${node.fields.slug}`)
+    } else {
+      console.warn(`Skipping creation of destination page for node with id ${node.id} due to missing name in frontmatter`)
+    }
   })
 
   // Create pages for blog posts
   const blogResult = await graphql(`
     query {
-      allMarkdownRemark {
+      allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/blog/" } }) {
         nodes {
+          id
           fields {
             slug
           }
@@ -312,46 +385,12 @@ exports.createPages = async ({ actions, graphql }) => {
   blogResult.data.allMarkdownRemark.nodes.forEach(node => {
     createPage({
       path: `/blog/${node.fields.slug}`,
-      component: require.resolve("./src/templates/blog-post.tsx"),
+      component: path.resolve(`src/templates/blog-post.tsx`),
       context: {
+        id: node.id,
         slug: node.fields.slug,
       },
     })
-  })
-
-  // Create pages for destinations from markdown files
-  const markdownResult = await graphql(`
-    {
-      allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/destinations/" } }) {
-        edges {
-          node {
-            id
-            frontmatter {
-              name
-            }
-          }
-        }
-      }
-    }
-  `)
-
-  if (markdownResult.errors) {
-    console.error(markdownResult.errors)
-    throw markdownResult.errors
-  }
-
-  markdownResult.data.allMarkdownRemark.edges.forEach(({ node }) => {
-    if (node.frontmatter && node.frontmatter.name) {
-      createPage({
-        path: `/destination/${node.frontmatter.name.toLowerCase().replace(/ /g, '-')}`,
-        component: path.resolve(`src/templates/destination.tsx`),
-        context: {
-          id: node.id,
-        },
-      })
-    } else {
-      console.warn(`Skipping creation of destination page for node with id ${node.id} due to missing name in frontmatter`)
-    }
   })
 }
 
