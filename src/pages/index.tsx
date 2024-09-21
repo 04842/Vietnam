@@ -3,7 +3,7 @@
 import React from 'react'
 import { graphql, HeadFC, PageProps } from 'gatsby'
 import Layout from '../components/Layout'
-import Seo from '../components/Seo'
+import seo from '../components/seo'
 import SearchBar from '../components/SearchBar'
 import TravelRecommendations from '../components/TravelRecommendations'
 import Promotions from '../components/Promotions'
@@ -38,7 +38,7 @@ const HomePage: React.FC<HomePageProps> = ({ data }) => {
 export default HomePage
 
 export const Head: HeadFC<HomePageData> = ({ data }) => (
-  <Seo title={data.site.siteMetadata.title} description={data.site.siteMetadata.description} />
+  <seo title={data.site.siteMetadata.title} description={data.site.siteMetadata.description} />
 )
 
 export const query = graphql`

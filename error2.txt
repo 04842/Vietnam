@@ -1,149 +1,95 @@
-PS D:\GitHub\04842\Vietnam> npm run build
-
-> gatsby-starter-default@0.1.0 build
-> gatsby build
-
-success compile gatsby files - 2.122s
-success load gatsby config - 0.050s
-success load plugins - 0.784s
-success onPreInit - 0.005s                                                                                                                                 
-success delete worker cache from previous builds - 0.003s
-success initialize cache - 0.079s
-success copy gatsby files - 0.126s
-success Compiling Gatsby Functions - 0.239s
-success onPreBootstrap - 0.256s
-success createSchemaCustomization - 0.009s
-success Checking for changed pages - 0.002s                                                                                                                
-success source and transform nodes - 0.186s                                                                                                                
-info Writing GraphQL type definitions to D:/GitHub/04842/Vietnam/.cache/schema.gql
-success building schema - 0.371s
-Markdown query result: {
-  "data": {
-    "allMarkdownRemark": {
-      "edges": [
-        {
-          "node": {
-            "id": "fb9df90b-5f2e-58e5-ac79-baad2ddaea2d",
-            "frontmatter": {
-              "name": "Paris"
-            },
-            "fields": {
-              "slug": "/name/"
-            }
-          }
-        }
-      ]
-    }
-  }
-}
-Processing node: fb9df90b-5f2e-58e5-ac79-baad2ddaea2d /name/ Paris                                                                                         
-Created page for: Paris with path: /destination//name/
-success createPages - 0.137s
-success createPagesStatefully - 0.283s
-info Total nodes: 102, SitePage nodes: 21 (use --verbose for breakdown)                                                                                    
-success Checking for changed pages - 0.001s                                                                                                                
-success Cleaning up stale page-data - 0.005s
-success onPreExtractQueries - 0.002s                                                                                                                       
-success extract queries from components - 1.382s
-warn The GraphQL query in the non-page component "D:/GitHub/04842/Vietnam/src/templates/blog-post.tsx" will not be run.                                    
-Exported queries are only executed for page components. It's possible you're trying to create pages in your gatsby-node.js and that's failing for some     
-reason.
-
-If the failing component is a regular component and not intended to be a page component, you generally want to use "useStaticQuery"
-(https://www.gatsbyjs.com/docs/how-to/querying-data/use-static-query/) instead of exporting a page query.
-
-If you're more experienced with GraphQL, you can also export GraphQL fragments from components and compose the fragments in the Page component query and   
-pass data down into the child component (https://www.gatsbyjs.com/docs/reference/graphql-data-layer/using-graphql-fragments/)
-success write out redirect data - 0.004s
-success Build manifest and related icons - 0.109s
-success onPostBootstrap - 0.115s
-info bootstrap finished - 8.811s                                                                                                                           
-success write out requires - 0.008s
-success Building production JavaScript and CSS bundles - 2.143s
-success Building HTML renderer - 5.724s
-success Execute page configs - 0.050s
-⠙ Building Rendering Engines
-<w> [webpack.cache.PackFileCacheStrategy] Serializing big strings (939kiB) impacts deserialization performance (consider using Buffer instead and decode when needed)
-<w> [webpack.cache.PackFileCacheStrategy] Serializing big strings (939kiB) impacts deserialization performance (consider using Buffer instead and decode when needed)
-<w> [webpack.cache.PackFileCacheStrategy] Serializing big strings (939kiB) impacts deserialization performance (consider using Buffer instead and decode whsuccess Building Rendering Engines - 24.908s
-success Validating Rendering Engines - 1.581s
-success Caching Webpack compilations - 0.001s                                                                                                              
-success run queries in workers - 0.082s - 29/29 355.08/s
-success Merge worker state - 0.005s                                                                                                                        
-success Rewriting compilation hashes - 0.001s
-success Writing page-data.json and slice-data.json files to public directory - 0.011s - 19/21 1882.38/s
-
- ERROR  UNKNOWN
-
-Truncated page data information for the failed page "/destination//name/": {
-  "errors": {},
-  "path": "/destination//name/",
-  "slicesMap": {},
-  "pageContext": {
-    "id": "fb9df90b-5f2e-58e5-ac79-baad2ddaea2d",
-    "slug": "/name/"
-  }
-}
-
-failed Building static HTML for pages - 2.865s                                                                                                             
-                                                                                                                                                           
- ERROR #95313  HTML.COMPILATION
-
-Building static HTML failed for path "/destination//name/"
-
-See our docs page for more info on this error: https://gatsby.dev/debug-html
-
-
-
-
-
-  WebpackError: The result of this StaticQuery could not be fetched.
-
-  - static-query.js:83
-    webpack:/gatsby-starter-default/.cache/static-query.js:83:11
-
-  - Layout.js:15
-    webpack:/gatsby-starter-default/src/components/Layout.js:15:30
-
-  - react-dom-server.node.production.min.js:70
-    [gatsby-starter-default]/[react-dom]/cjs/react-dom-server.node.production.min.js:70:38
-
-  - react-dom-server.node.production.min.js:72
-    [gatsby-starter-default]/[react-dom]/cjs/react-dom-server.node.production.min.js:72:251
-
-  - react-dom-server.node.production.min.js:78
-    [gatsby-starter-default]/[react-dom]/cjs/react-dom-server.node.production.min.js:78:81
-
-  - react-dom-server.node.production.min.js:72
-    [gatsby-starter-default]/[react-dom]/cjs/react-dom-server.node.production.min.js:72:476
-
-  - react-dom-server.node.production.min.js:78
-    [gatsby-starter-default]/[react-dom]/cjs/react-dom-server.node.production.min.js:78:81
-
-  - react-dom-server.node.production.min.js:70
-    [gatsby-starter-default]/[react-dom]/cjs/react-dom-server.node.production.min.js:70:468
-
-  - react-dom-server.node.production.min.js:72
-    [gatsby-starter-default]/[react-dom]/cjs/react-dom-server.node.production.min.js:72:210
-
-  - react-dom-server.node.production.min.js:78
-    [gatsby-starter-default]/[react-dom]/cjs/react-dom-server.node.production.min.js:78:81
-
-  - react-dom-server.node.production.min.js:81
-    [gatsby-starter-default]/[react-dom]/cjs/react-dom-server.node.production.min.js:81:91
-
-  - react-dom-server.node.production.min.js:73
-    [gatsby-starter-default]/[react-dom]/cjs/react-dom-server.node.production.min.js:73:145
-
-  - react-dom-server.node.production.min.js:78
-    [gatsby-starter-default]/[react-dom]/cjs/react-dom-server.node.production.min.js:78:81
-
-  - react-dom-server.node.production.min.js:72
-    [gatsby-starter-default]/[react-dom]/cjs/react-dom-server.node.production.min.js:72:476
-
-  - react-dom-server.node.production.min.js:78
-    [gatsby-starter-default]/[react-dom]/cjs/react-dom-server.node.production.min.js:78:81
-
-  - react-dom-server.node.production.min.js:72
-    [gatsby-starter-default]/[react-dom]/cjs/react-dom-server.node.production.min.js:72:476
-
+Exported queries are only executed for page components. It's possible you're trying to create pages in your gatsby-node.js and that's failing for some reason.
+08:29:28.778	
+08:29:28.778	If the failing component is a regular component and not intended to be a page component, you generally want to use "useStaticQuery" (https://www.gatsbyjs.com/docs/how-to/querying-data/use-static-query/) instead of exporting a page query.
+08:29:28.778	
+08:29:28.779	If you're more experienced with GraphQL, you can also export GraphQL fragments from components and compose the fragments in the Page component query and pass data down into the child component (https://www.gatsbyjs.com/docs/reference/graphql-data-layer/using-graphql-fragments/)
+08:29:28.779	warning The GraphQL query in the non-page component "/opt/buildhome/repo/src/templates/blog-post.tsx" will not be run.
+08:29:28.780	success write out redirect data - 0.001s
+08:29:28.846	success Build manifest and related icons - 0.064s
+08:29:28.847	success onPostBootstrap - 0.065s
+08:29:28.847	info bootstrap finished - 7.017s
+08:29:28.856	success write out requires - 0.004s
+08:29:38.183	failed Building production JavaScript and CSS bundles - 9.327s
+08:29:38.186	error Generating JavaScript bundles failed
+08:29:38.186	
+08:29:38.186	Can't resolve '../../components/Seo' in '/opt/buildhome/repo/src/pages/account'
+08:29:38.186	
+08:29:38.186	If you're trying to use a package make sure that '../../components/Seo' is installed. If you're trying to use a local file make sure that the path is correct.
+08:29:38.187	error Generating JavaScript bundles failed
+08:29:38.187	
+08:29:38.187	Can't resolve '../../components/Seo' in '/opt/buildhome/repo/src/pages/account'
+08:29:38.187	
+08:29:38.187	If you're trying to use a package make sure that '../../components/Seo' is installed. If you're trying to use a local file make sure that the path is correct.
+08:29:38.187	error Generating JavaScript bundles failed
+08:29:38.188	
+08:29:38.188	Can't resolve '../components/Seo' in '/opt/buildhome/repo/src/pages'
+08:29:38.188	
+08:29:38.188	If you're trying to use a package make sure that '../components/Seo' is installed. If you're trying to use a local file make sure that the path is correct.
+08:29:38.188	error Generating JavaScript bundles failed
+08:29:38.188	
+08:29:38.188	Can't resolve '../components/Seo' in '/opt/buildhome/repo/src/pages'
+08:29:38.188	
+08:29:38.189	If you're trying to use a package make sure that '../components/Seo' is installed. If you're trying to use a local file make sure that the path is correct.
+08:29:38.189	error Generating JavaScript bundles failed
+08:29:38.189	
+08:29:38.189	Can't resolve '../components/Seo' in '/opt/buildhome/repo/src/pages'
+08:29:38.189	
+08:29:38.189	If you're trying to use a package make sure that '../components/Seo' is installed. If you're trying to use a local file make sure that the path is correct.
+08:29:38.189	error Generating JavaScript bundles failed
+08:29:38.190	
+08:29:38.190	Can't resolve '../components/Seo' in '/opt/buildhome/repo/src/pages'
+08:29:38.190	
+08:29:38.190	If you're trying to use a package make sure that '../components/Seo' is installed. If you're trying to use a local file make sure that the path is correct.
+08:29:38.190	error Generating JavaScript bundles failed
+08:29:38.190	
+08:29:38.190	Can't resolve '../components/Seo' in '/opt/buildhome/repo/src/pages'
+08:29:38.191	
+08:29:38.191	If you're trying to use a package make sure that '../components/Seo' is installed. If you're trying to use a local file make sure that the path is correct.
+08:29:38.191	error Generating JavaScript bundles failed
+08:29:38.191	
+08:29:38.191	Can't resolve '../components/Seo' in '/opt/buildhome/repo/src/pages'
+08:29:38.191	
+08:29:38.191	If you're trying to use a package make sure that '../components/Seo' is installed. If you're trying to use a local file make sure that the path is correct.
+08:29:38.192	error Generating JavaScript bundles failed
+08:29:38.192	
+08:29:38.192	Can't resolve '../components/Seo' in '/opt/buildhome/repo/src/pages'
+08:29:38.192	
+08:29:38.192	If you're trying to use a package make sure that '../components/Seo' is installed. If you're trying to use a local file make sure that the path is correct.
+08:29:38.193	error Generating JavaScript bundles failed
+08:29:38.193	
+08:29:38.193	Can't resolve '../components/Seo' in '/opt/buildhome/repo/src/templates'
+08:29:38.193	
+08:29:38.193	If you're trying to use a package make sure that '../components/Seo' is installed. If you're trying to use a local file make sure that the path is correct.
+08:29:38.193	error Generating JavaScript bundles failed
+08:29:38.193	
+08:29:38.193	Can't resolve '../components/Seo' in '/opt/buildhome/repo/src/pages'
+08:29:38.193	
+08:29:38.194	If you're trying to use a package make sure that '../components/Seo' is installed. If you're trying to use a local file make sure that the path is correct.
+08:29:38.194	error Generating JavaScript bundles failed
+08:29:38.194	
+08:29:38.194	Can't resolve '../components/Seo' in '/opt/buildhome/repo/src/pages'
+08:29:38.194	
+08:29:38.194	If you're trying to use a package make sure that '../components/Seo' is installed. If you're trying to use a local file make sure that the path is correct.
+08:29:38.194	error Generating JavaScript bundles failed
+08:29:38.194	
+08:29:38.194	Can't resolve '../components/Seo' in '/opt/buildhome/repo/src/pages'
+08:29:38.194	
+08:29:38.194	If you're trying to use a package make sure that '../components/Seo' is installed. If you're trying to use a local file make sure that the path is correct.
+08:29:38.195	error Generating JavaScript bundles failed
+08:29:38.195	
+08:29:38.195	Can't resolve '../components/Seo' in '/opt/buildhome/repo/src/templates'
+08:29:38.195	
+08:29:38.195	If you're trying to use a package make sure that '../components/Seo' is installed. If you're trying to use a local file make sure that the path is correct.
+08:29:39.218	node:events:652
+08:29:39.218	    return this.listener.apply(this.target, arguments);
+08:29:39.219	                         ^
+08:29:39.219	
+08:29:39.219	q [Error]: Error while executing user command. Exited with error code: 1
+08:29:39.219	    at ChildProcess.<anonymous> (/snapshot/dist/run-build.js)
+08:29:39.219	    at Object.onceWrapper (node:events:652:26)
+08:29:39.219	    at ChildProcess.emit (node:events:537:28)
+08:29:39.219	    at ChildProcess._handle.onexit (node:internal/child_process:291:12)
+08:29:39.219	
+08:29:39.220	Node.js v18.5.0
+08:29:39.778	Failed: build command exited with code: 1
+08:29:40.675	Failed: error occurred while running build command

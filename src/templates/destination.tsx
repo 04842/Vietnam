@@ -3,7 +3,7 @@
 import React from 'react'
 import { graphql, PageProps } from 'gatsby'
 import Layout from '../components/Layout'
-import Seo from '../components/Seo'
+import seo from '../components/seo'
 import InteractiveMap from '../components/InteractiveMap'
 import TravelGuide from '../components/TravelGuide'
 import LocalActivities from '../components/LocalActivities'
@@ -29,7 +29,7 @@ const DestinationPage: React.FC<PageProps<DestinationData>> = ({ data }) => {
 
   return (
     <Layout>
-      <Seo title={destination.name} description={destination.description} />
+      <seo title={destination.name} description={destination.description} />
       <h1>{destination.name}</h1>
       <p>{destination.description}</p>
       <section>

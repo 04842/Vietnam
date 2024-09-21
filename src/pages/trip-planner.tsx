@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 import { graphql, PageProps } from 'gatsby'
 import Layout from '../components/Layout'
-import Seo from '../components/Seo'
+import seo from '../components/seo'
 import DestinationSelector from '../components/DestinationSelector'
 import DateRangePicker from '../components/DateRangePicker'
 import ItineraryEditor from '../components/ItineraryEditor'
@@ -54,7 +54,7 @@ const TripPlannerPage: React.FC<PageProps<TripPlannerPageData>> = ({ data }) => 
 
   return (
     <Layout>
-      <Seo title="行程規劃器" description="規劃您的完美旅程" />
+      <seo title="行程規劃器" description="規劃您的完美旅程" />
       <h1>行程規劃器</h1>
       <DestinationSelector
         destinations={data.allDestination.nodes}
