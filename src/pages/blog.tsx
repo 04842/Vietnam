@@ -32,7 +32,7 @@ const BlogPage: React.FC<PageProps<BlogPageData>> = ({ data }) => {
 
   return (
     <Layout>
-      <Seo title="旅遊博客" description="探索我們的旅遊文章和專家攻略" />
+      <seo title="旅遊博客" description="探索我們的旅遊文章和專家攻略" />
       <h1>旅遊博客</h1>
       <div>
         {posts.map(({ node }) => (

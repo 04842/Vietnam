@@ -29,7 +29,7 @@ const DestinationPage: React.FC<PageProps<DestinationData>> = ({ data }) => {
 
   return (
     <Layout>
-      <Seo title={destination.name} description={destination.description} />
+      <seo title={destination.name} description={destination.description} />
       <h1>{destination.name}</h1>
       <p>{destination.description}</p>
       <section>

@@ -14,7 +14,7 @@ const BookingPage: React.FC = () => {
 
   return (
     <Layout>
-      <Seo title="預訂系統" description="預訂您的航班、酒店、活動和租車" />
+      <seo title="預訂系統" description="預訂您的航班、酒店、活動和租車" />
       <h1>預訂系統</h1>
       <nav>
         <button onClick={() => setActiveTab('flights')}>航班</button>

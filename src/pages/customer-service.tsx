@@ -11,7 +11,7 @@ import PhoneSupport from '../components/customer-service/PhoneSupport'
 const CustomerServicePage: React.FC = () => {
   return (
     <Layout>
-      <Seo title="客戶服務" description="獲取幫助和支持" />
+      <seo title="客戶服務" description="獲取幫助和支持" />
       <h1>客戶服務</h1>
       <LiveChat />
       <FAQ />

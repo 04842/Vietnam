@@ -17,7 +17,7 @@ const LoginPage: React.FC = () => {
 
   return (
     <Layout>
-      <Seo title={isLogin ? "登入" : "註冊"} description="登入或註冊您的帳戶" />
+      <seo title={isLogin ? "登入" : "註冊"} description="登入或註冊您的帳戶" />
       <h1>{isLogin ? "登入" : "註冊"}</h1>
       {isLogin ? (
         <LoginForm onSuccess={handleSuccessfulAuth} />
