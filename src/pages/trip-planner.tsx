@@ -54,7 +54,7 @@ const TripPlannerPage: React.FC<PageProps<TripPlannerPageData>> = ({ data }) => 
 
   return (
     <Layout>
-      <seo title="行程規劃器" description="規劃您的完美旅程" />
+      <Seo title="行程規劃器" description="規劃您的完美旅程" />
       <h1>行程規劃器</h1>
       <DestinationSelector
         destinations={data.allDestination.nodes}

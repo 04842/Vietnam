@@ -38,7 +38,7 @@ const HomePage: React.FC<HomePageProps> = ({ data }) => {
 export default HomePage
 
 export const Head: HeadFC<HomePageData> = ({ data }) => (
-  <seo title={data.site.siteMetadata.title} description={data.site.siteMetadata.description} />
+  <Seo title={data.site.siteMetadata.title} description={data.site.siteMetadata.description} />
 )
 
 export const query = graphql`
